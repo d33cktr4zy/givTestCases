@@ -4,7 +4,10 @@
         <div class="row">
             <div class="col-md-6 col-12">
                 <h3 class="text-center">WHO AM I</h3>
-                <p align="center"><span class="fa fa-facebook-square" style="font-size:30px;color:#2531B5"></span> gabriel.fermy@gmail.com</p>
+                <p align="center"><span class="fa fa-facebook-square" style="font-size:30px;color:#2531B5"></span> <a href="https://www.facebook.com/g.fermy">g.fermy</a></p>
+                <p>
+                    <a href="https://www.linkedin.com/in/gabrielfermy/">Linked In</a>
+                </p>
             </div>
             <div class="col-md-6 col-12">
                 <h3 class="text-center">GET IN TOUCH</h3>

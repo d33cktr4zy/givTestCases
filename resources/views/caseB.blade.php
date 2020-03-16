@@ -5,7 +5,7 @@ Case B - Lucky 7
 @endsection
 
 @section('content')
-<div class="container"> 
+<div class="container" style="height: 350px; overflow-y: scroll;"> 
 	<div class="row">
 		<div class="col-12">
 			<h3 class="text-center">Case B</h3> 
@@ -122,9 +122,111 @@ Case B - Lucky 7
 @endsection
 
 @section('solution')
+	<div class="container" id="solution">
+		<div class="row">
+			<div class="col-12">
+				<h3 class="text-center">Solution</h3>
 
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<pre class="pre-scrollable">
+    public function lucky($num){
+    	// it takes a number 
+    	// assign that number to N
+    	$N = $num;
+    	$k = array();
+    	$res = array();
+    	//from that $N, find the possible $K value
+    	//since the rules say that its only gonna have positive integer, we start loop from 1
+    	for($i=1; $i<$N; $i++){
+    		if($N % $i > 0){
+    			$k[]=$i;
+    		}
+    		
+    	}
+
+    	foreach ($k as $v) {
+    		$firstVal = (int)($N / $v); //since we got K, we can determine what is the lowest value
+    		$changeAt = $N % $v; //after how many itteration before the end it has to change value
+
+    		$a=array();
+    		for($i=0;$i<$v-$changeAt;$i++){
+    			//masukkan ke kontainer
+    			$a[]=$firstVal;
+    		}
+    		for($i=($v-$changeAt);$i<$v;$i++){
+    			//after value change
+    			$a[]=$firstVal + 1;
+    		}
+
+    		$res[$v]=$a; //we have all possible combination here!! ^_^
+    		# code...
+    	}
+
+    	return $res;
+    }
+				</pre>
+			</div>
+		</div>
+	</div>
 @endsection
 
 @section('result')
+<div class="container" id='result'>
+	<div class="row">
+		<div class="col-12">
+			<h3 class="text-center">Result Testing</h3>
+		</div>
+	</div> 
+	<div class="row">
+		<div class="col-12">
+			{!! Form::open(['action'=>'caseBController@process']) !!}
+			<div class="col-12">
+				<div class="form-group col-12 text-center">
+					<div class="col-auto">
+
+						{!! Form::label('number', 'Please Enter a Number (N)',['class'=>'col-form-label']) !!}
+					</div>
+					<div class="col-auto">
+						@empty($oldNum)
+						{!! Form::number('number','Please Enter a Number',['class' => 'form-control']) !!}
+						@endempty
+						@isset($oldNum)
+						{!! Form::number('number',$oldNum,['class' => 'form-control']) !!}
+						@endisset
+					</div>
+					<div class="col-auto">
+						<hr>
+						{!! Form::submit('Proces Number!',['class' => 'btn btn-block btn-primary']) !!}
+					</div>
+
+				</div>
+			</div>
+			{!! Form::close() !!}
+		</div>
+	</div>
+
+	@isset($res)
+	<div class="container" style="max-height: 200px; overflow-y: scroll;">
+		
+		@foreach($res as $k => $a)
+
+		<?php $str = ''; ?>
+		@foreach($a as $i)
+		<?php $str = $str . $i .' '; ?> 
+		@endforeach
+		<pre class="alert-dark col-auto">
+			{{ $k }}
+			{{ $str }}
+		</pre>
+
+		@endforeach
+		
+	</div>	
+	@endisset
+</div>
+
 
 @endsection

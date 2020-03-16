@@ -15,25 +15,28 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 //Route::get('/','pagesController@showHome');
-Route::get('caseA','caseAController@show');
+Route::get('caseA','caseAController@show')->name('showCaseA');
 Route::post('caseA', 'caseAController@process');
 
-Route::get('caseB','caseBController@show');
+Route::get('caseB','caseBController@show')->name('showCaseB');
+Route::post('caseB', 'caseBController@process');
 
-Route::get('caseC','caseCController@show');
+Route::get('caseC','caseCController@show')->name('showCaseC');
 
-Route::get('caseD','caseDController@show');
+Route::get('caseD','caseDController@show')->name('showCaseD');
 Route::post('caseD','caseDController@process');
 
-Route::get('caseE','caseEController@show');
+Route::get('caseE','caseEController@show')->name('showCaseE');
 Route::post('caseE', 'caseEController@process');
-Route::get('about', 'pagesController@showAbout');
+Route::get('about', 'pagesController@showAbout')->name('showAbout');
 
 
 Route::get('testCaseA/parse/', 'caseAController@parse');
+
+Route::get('testCaseB/{num}', 'caseBController@lucky');
 
 
 Route::get('testCaseE/reverse/{num}', 'caseEController@reverse');
