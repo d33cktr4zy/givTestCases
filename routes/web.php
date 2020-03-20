@@ -33,8 +33,13 @@ Route::get('caseE','caseEController@show')->name('showCaseE');
 Route::post('caseE', 'caseEController@process');
 Route::get('about', 'pagesController@showAbout')->name('showAbout');
 
+Route::get('caseImp', 'caseImpControllers@show')->name('webimp');
+Route::post('caseImp', 'caseImpControllers@process');
 
 Route::get('testCaseA/parse/', 'caseAController@parse');
+
+Route::get('testImp/1', 'caseImpControllers@commonNumbers');
+Route::get('testImp/2/{num}', 'caseImpControllers@smallest');
 
 Route::get('testCaseB/{num}', 'caseBController@lucky');
 
